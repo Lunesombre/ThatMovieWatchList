@@ -1,5 +1,6 @@
 <?php
-$title="Movies";
+$title="Films";
+session_start();
 require_once __DIR__ . '/layout/header.php';
 ?>
 <div id="underConstruction"></div>
