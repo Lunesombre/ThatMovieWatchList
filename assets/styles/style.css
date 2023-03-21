@@ -1,0 +1,8 @@
+html.body{
+    width:100%;
+}
+#underConstruction{
+    background-image: url("../img/Website_under_construction.png");
+    height:100vh;
+    background-size: cover;
+}

@@ -55,6 +55,14 @@ First thing I thought of was "MyMovieList", but of course lots of people already
 
 Then I thought about "MovieWatchList" or "MyMovieWatchList", but then again, not that original.
 
-I finally settled with "ThatMovieWatchList" - a name a little more sought after (and I didn't want to spend much more time on it).
+I finally settled with "ThatMovieWatchList" - a name a little more sought after - referring to 'That 70's show' (and I didn't want to spend much more time on it).
 
 This done, repo created here, then initiated locally via GitBash and created this README.md you're reading, then pushed it in the remote repo.
+
+### Started organizing the project, using Separation of concerns
+
+- created layout folder with reusable parts for the different web pages : header, footer, and a navbar, using php's file inclusion (require and require_once)
+
+- added a background image I made to all pages under construction in order to protect my eyes from white screens ^^'cd 
+
+- also, found a font I could use in logo, similar to that 70's show iconic font. Kept it out of versionning for now.
