@@ -1,8 +1,18 @@
-html.body{
+html body{
     width:100%;
+
 }
 #underConstruction{
     background-image: url("../img/Website_under_construction.png");
     height:100vh;
     background-size: cover;
+}
+#background{
+    background: linear-gradient(45deg,#7842b3,  #063d33 40%,  #7daad8 80%) !important;
+}
+.movie_card{
+    border: solid 3px goldenrod;
+}
+.poster{
+    width: 200px;
 }
