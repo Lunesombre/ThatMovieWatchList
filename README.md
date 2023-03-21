@@ -66,3 +66,6 @@ This done, repo created here, then initiated locally via GitBash and created thi
 - added a background image I made to all pages under construction in order to protect my eyes from white screens ^^'cd 
 
 - also, found a font I could use in logo, similar to that 70's show iconic font. Kept it out of versionning for now.
+
+### Recreated an authentification from the exercise I made a few days earlier.
+
