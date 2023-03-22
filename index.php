@@ -9,14 +9,21 @@ if (!isset($_SESSION['isConnected']))
 require_once __DIR__ . '/layout/header.php';
 ?>
 
-<?php if (array_key_exists('msg', $_GET)) { ?>
-    <div class="alert alert-success d-flex mx-auto">
-        <?php echo ConnexionMessages::getConnexionMessage(intval($_GET['msg'])); ?>
+
+    
+    
+<div class="background container-fluid d-flex flex-column justify-content-center">
+    <?php if (array_key_exists('msg', $_GET)) { ?>
+        <div class="alert alert-success my-1 mx-auto" role="alert">
+            <?php echo ConnexionMessages::getConnexionMessage(intval($_GET['msg'])); ?>
+        </div>
+    <?php } ?>
+    <div class="d-flex flex-column my-auto">
+        <h2 class="mx-auto">Cette page est en construction</h2>
+        <p class="mx-auto">Repassez plus tard !</p>
     </div>
-<?php } ?>
-    
-    
-<div id="underConstruction"></div>
+</div>
+
 
 <?php
 require_once __DIR__. '/layout/footer.php';
