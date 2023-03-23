@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav d-flex justify-content-evenly col-6">
             <li class="nav-item">
                 <a class="nav-link active text-bg-dark" aria-current="page" href="index.php">Homepage</a>
@@ -22,6 +22,12 @@
                 }
                 ?>
             </li>
+            <?php if ($_SESSION['isConnected']=== false){
+                echo '<li class="nav-item">
+                <a class="nav-link text-bg-dark" href="register.php">S\'enregistrer</a>
+                </li>';
+            }
+            ?>
             <li class="nav-item">
                 <a class="nav-link text-bg-dark" href="movies.php">Parcourir les films</a>
             </li>

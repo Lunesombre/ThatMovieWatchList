@@ -1,6 +1,5 @@
 html body{
     width:100%;
-    /* height:100%; */
     background: linear-gradient(45deg,#7842b3,  #063d33 40%,  #7daad8 80%) no-repeat;
 
 }
@@ -18,10 +17,7 @@ html body{
 }
 .poster{
     border : solid black 1px;
-    /* max-width: 200px; */
-    /* text-align: center;
-    justify-content: center;
-    align-items: center; */
+
 
 }
 .movie_overview{
@@ -32,4 +28,8 @@ html body{
 }
 .movie_card_lowerpart{
     height: 40%;
+}
+.register_form{
+    background: rgba(0, 0, 0, 0.5);
+    border-radius : 10px;
 }
