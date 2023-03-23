@@ -24,7 +24,7 @@ html body{
     background-color: #71807d;
 }
 .movie_card_upperpart{
-    height: 60%;
+    min-height: 60%;
 }
 .movie_card_lowerpart{
     height: 40%;
