@@ -2,9 +2,9 @@
 require_once __DIR__.'/functions.php';
 require_once __DIR__.'/classes/ConnexionMessages.php';
 
-// if (empty($_POST) || !isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['birthdate']) || !isset($_POST['email']) || !isset($_POST['pseudo']) || !isset($_POST['password'])) {
-//     redirect('register.php');
-// }
+if (empty($_POST) || !isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['birthdate']) || !isset($_POST['email']) || !isset($_POST['pseudo']) || !isset($_POST['password'])) {
+    redirect('register.php');
+}
 
 require_once __DIR__.'/db/pdo.php';
 
@@ -71,4 +71,4 @@ if ($insertNewUser===false)
 }
 redirect('index.php?msg='. ConnexionMessages::REGISTRATION_SUCCESS);
 
-//NB : j'ai modifié la longueur max du stockage de password uatorisé dans ma bdd selon les recommandation de la doc php en utilisant PASSWORD_DEFAULT, ils recommandent VARCHAR (255), en cas de changement d'algo de cryptage dans une version ultérieure de php.
+//NB : j'ai modifié la longueur max du stockage de password autorisé dans ma bdd selon les recommandation de la doc php en utilisant PASSWORD_DEFAULT, ils recommandent VARCHAR (255), en cas de changement d'algo de cryptage dans une version ultérieure de php.

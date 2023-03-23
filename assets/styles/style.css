@@ -33,3 +33,7 @@ html body{
     background: rgba(0, 0, 0, 0.5);
     border-radius : 10px;
 }
+.profile_pic{
+    width: 200px;
+    /* box-shadow: inset 5px 3px 20px black; */
+}

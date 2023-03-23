@@ -22,9 +22,15 @@
                 }
                 ?>
             </li>
-            <?php if ($_SESSION['isConnected']=== false){
+            <?php 
+            if ($_SESSION['isConnected']=== false){
                 echo '<li class="nav-item">
                 <a class="nav-link text-bg-dark" href="register.php">S\'enregistrer</a>
+                </li>';
+            }
+            if ($_SESSION['isConnected']){
+                echo '<li class="nav-item">
+                <a class="nav-link text-bg-dark" href="dashboard.php">Mon profil</a>
                 </li>';
             }
             ?>

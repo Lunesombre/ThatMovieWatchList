@@ -30,5 +30,6 @@ if (password_verify($password, $hashedPassword)===false)
 }
 
 $_SESSION['isConnected']= true;
+$_SESSION['pseudo']= $login;
 redirect('index.php?msg=' . ConnexionMessages::CONNEXION_IS_VALID);
 

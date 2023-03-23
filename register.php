@@ -42,7 +42,7 @@ require_once __DIR__ . '/layout/header.php';
                 </div>
                 <br>
                 <div class="col-8 form-floating pt-1 px-1">
-                    <input class="form-control mb-2" type="file" id="picture">
+                    <input name="picture" class="form-control mb-2" type="file" id="picture">
                     <label for="picture" class="form-label " placeholder="image de profil">Choisissez votre image de profil</label>
                 </div>
                 <div class="col-8 text-end px-1">
