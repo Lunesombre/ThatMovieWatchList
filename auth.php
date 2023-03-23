@@ -1,41 +1,34 @@
 <?php
+session_start();
 require_once 'functions.php';
 require_once 'classes/ConnexionMessages.php';
-session_start();
 
 if(empty($_POST) || !isset($_POST['userNickname']) || !isset($_POST['password'])){
     redirect('index.php');
 }
 
-    require_once __DIR__.'/db/pdo.php';
+require_once __DIR__.'/db/pdo.php';
 
 
-    $login = $_POST['userNickname'];
-    $password = $_POST['password'];
+$login = $_POST['userNickname'];
+$password = $_POST['password'];
 
-    // requête préparée
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE user_nickname=:pseudo AND user_password=:mdp");
-    
-    $stmt->execute([
-        "pseudo"=>$login,
-        "mdp"=>$password
-    ]);
-    
-    
-    
-    if ($stmt->fetch()=== false) {        
-        // require_once 'layout/header.php';
-        // echo "Cannot find user";
-        redirect('login.php?msg=' . ConnexionMessages::INVALID_USER);
-    } else {
-        $_SESSION['isConnected']= true;
-        // require_once 'layout/header.php';
-        // echo "Successful connexion";
-        redirect('index.php?msg=' . ConnexionMessages::CONNEXION_IS_VALID);
-    }
+// requête préparée
+$stmt = $pdo->prepare("SELECT user_password FROM users WHERE user_nickname=:pseudo");
 
-    var_dump($_SESSION);
+$stmt->execute(["pseudo"=>$login]);
+$userPasswordCheck= $stmt->fetch();
 
-    require_once 'layout/footer.php';
+if ($userPasswordCheck === false) {        
+    redirect('login.php?msg=' . ConnexionMessages::INVALID_USER);
+}
 
+$hashedPassword = $userPasswordCheck['user_password'];
+if (password_verify($password, $hashedPassword)===false)
+{
+    redirect('login.php?msg='. ConnexionMessages::INVALID_USER);
+}
+
+$_SESSION['isConnected']= true;
+redirect('index.php?msg=' . ConnexionMessages::CONNEXION_IS_VALID);
 
