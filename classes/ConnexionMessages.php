@@ -9,6 +9,9 @@ class ConnexionMessages
     public const EMAIL_ALREADY_USED = 4;
     public const REGISTRATION_FAILURE = 5;
     public const REGISTRATION_SUCCESS = 6;
+    public const SUCCESSFUL_FILE_REGISTRATION = 7;
+    public const INVALID_FILE_REGISTRATION = 8;
+    public const PROFILE_UPDATE_FAILURE = 9;
 
 
 
@@ -32,6 +35,15 @@ class ConnexionMessages
                 break;
             case ConnexionMessages::REGISTRATION_SUCCESS:
                 return "Inscription réussie !";
+                break;
+            case ConnexionMessages::SUCCESSFUL_FILE_REGISTRATION:
+                return "Enregistrement de fichier réussi";
+                break;
+            case ConnexionMessages::INVALID_FILE_REGISTRATION:
+                return "Echec de l'enregistrement de fichier";
+                break;
+            case ConnexionMessages::PROFILE_UPDATE_FAILURE:
+                return "Echec mise à jour du profil";
                 break;
             default:
                 return "Une erreur est survenue, merci de contacter l'administrateur.";
