@@ -42,16 +42,33 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
             <div class="card card-body" style="min-width: 300px;">
                 <form enctype="multipart/form-data" action="pictureChangeManagement.php" method="POST">
                     <input type="hidden" name="MAX_FILE_SIZE" value="3000000">
-                    <label for="picture" class="form-label " placeholder="image de profil">Changer votre image de profil :</label>
+                    <label for="picture" class="form-label " placeholder="image de profil">Changer votre image de profil (max 3Mb) :</label>
                     <input name="picture" class="form-control mb-2" type="file" id="picture" placeholder="profile picture">
                     <button type="submit" class="col-2 btn btn-outline-warning" value="Valider">Valider</button>
                 </form>
-                    <br>
-                    <!-- pseudo -->
+                <form action="userSettingsManagement.php" method="POST" class="form-floating">
+                    <div class="form-floating my-2">
+                        <input type="text" name="pseudo" id="pseudo" class="form-control my-2" placeholder="Modifier votre pseudo">
+                        <label for="pseudo" class="form-label " placeholder="Votre nouveau pseudo">Nouveau pseudo</label>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input type="text" name="currentPassword" id="currentPassword" class="form-control" placeholder="Mot de passe actuel">
+                        <label for="currentPassword" class="form-label " placeholder="Mot de passe actuel">Confirmez votre mot de passe pour valider.</label>   
+                    </div>
+                    <button type="submit" class="col-2 btn btn-outline-warning" value="Ok">Ok</button>
+                </form>
                     <!-- penser à modifier le $_SESSION avec le nouveau pseudo le cas échéant -->
-                    <br>
-                    <!-- password -->
-                    <br>
+                <form action="userSettingsManagement.php" method="POST" class="">
+                    <div class="form-floating my-2">
+                        <input type="text" name="currentPassword" id="currentPassword" class="form-control" placeholder="Mot de passe actuel">
+                        <label for="currentPassword" class="form-label " placeholder="Mot de passe actuel">Mot de passe actuel</label>   
+                    </div>
+                    <div class="form-floating my-2">
+                        <input type="text" name="newPassword" id="newPassword" class="form-control" placeholder="Nouveau mot de passe">
+                        <label for="newPassword" class="form-label " placeholder="Votre nouveau mot de passe">Nouveau mot de passe</label>
+                    </div>
+                    <button type="submit" class="col-2 btn btn-outline-warning" value="Ok">Ok</button>
+                </form>
                 <div class="">
                     Pour toute autre demande, veuillez contacter l'admin.
                 </div>
