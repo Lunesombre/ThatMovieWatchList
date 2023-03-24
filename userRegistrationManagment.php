@@ -17,7 +17,7 @@ $userEmail = $_POST['email'];
 $userPassword = $_POST['password'];
 $userBirthdate = $_POST['birthdate'];
 $userPseudo = $_POST['pseudo'];
-if (!isset($_POST['picture'])) 
+if (empty($_POST['picture'])) 
 {
     $userPicture=null;
 }else{

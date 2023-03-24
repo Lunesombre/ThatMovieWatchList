@@ -12,6 +12,8 @@ class ConnexionMessages
     public const SUCCESSFUL_FILE_REGISTRATION = 7;
     public const INVALID_FILE_REGISTRATION = 8;
     public const PROFILE_UPDATE_FAILURE = 9;
+    public const PROFILE_UPDATE_SUCCESS = 10;
+    public const WRONG_PASSWORD = 11;
 
 
 
@@ -44,6 +46,12 @@ class ConnexionMessages
                 break;
             case ConnexionMessages::PROFILE_UPDATE_FAILURE:
                 return "Echec mise à jour du profil";
+                break;
+            case ConnexionMessages::PROFILE_UPDATE_SUCCESS:
+                return "Mise à jour du profil réussie";
+                break;
+            case ConnexionMessages::WRONG_PASSWORD:
+                return "Erreur de mot de passe";
                 break;
             default:
                 return "Une erreur est survenue, merci de contacter l'administrateur.";
