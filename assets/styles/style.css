@@ -10,7 +10,7 @@ html body{
 /* } */
 .background{
     /* background: linear-gradient(45deg,#7842b3,  #063d33 40%,  #7daad8 80%)  no-repeat; */
-    height:100vh;
+    min-height:100vh;
 }
 .movie_card{
     max-width: 400px;

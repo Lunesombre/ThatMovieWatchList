@@ -6,6 +6,7 @@ if (!isset($_SESSION['isConnected']))
 {
     $_SESSION['isConnected']=false;
 }
+$_SESSION['fromWhichPage']='index.php';
 require_once __DIR__ . '/layout/header.php';
 ?>
 
@@ -14,7 +15,7 @@ require_once __DIR__ . '/layout/header.php';
     
 <div class="background container-fluid d-flex flex-column justify-content-center">
     <?php if (array_key_exists('msg', $_GET)) { ?>
-        <div class="alert alert-success my-1 mx-auto" role="alert">
+        <div class="alert alert-warning my-1 mx-auto" role="alert">
             <?php echo ConnexionMessages::getConnexionMessage(intval($_GET['msg'])); ?>
         </div>
     <?php } ?>

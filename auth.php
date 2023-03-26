@@ -20,16 +20,17 @@ $stmt->execute(["pseudo"=>$login]);
 $userPasswordCheck= $stmt->fetch();
 
 if ($userPasswordCheck === false) {        
-    redirect('login.php?msg=' . ConnexionMessages::INVALID_USER);
+    redirect('index.php?msg=' . ConnexionMessages::INVALID_USER);
 }
 
 $hashedPassword = $userPasswordCheck['user_password'];
 if (password_verify($password, $hashedPassword)===false)
 {
-    redirect('login.php?msg='. ConnexionMessages::INVALID_USER);
+    redirect('index.php?msg='. ConnexionMessages::INVALID_USER);
 }
 
 $_SESSION['isConnected']= true;
 $_SESSION['pseudo']= $login;
-redirect('index.php?msg=' . ConnexionMessages::CONNEXION_IS_VALID);
+$goBackToThatPage=$_SESSION['fromWhichPage'];
+redirect($goBackToThatPage.'?msg=' . ConnexionMessages::CONNEXION_IS_VALID);
 
