@@ -4,6 +4,7 @@ require_once 'functions.php';
 if (!isset($_SESSION['pseudo'])){
     redirect('index.php');
 }
+$_SESSION['fromWhichPage']='dashboard.php';
 $title='Page de '.$_SESSION['pseudo'];
 require_once __DIR__ .'/layout/header.php';
 require_once __DIR__.'/db/pdo.php';
@@ -11,7 +12,7 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
 
 ?>
 
-<div class="container d-flex flex-column">
+<div class="background container d-flex flex-column">
     <h1>Bienvenue <?php echo $_SESSION['pseudo'];?></h1>
     <?php
     if (array_key_exists('msg', $_GET)){ ?>
@@ -31,7 +32,7 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
         }else echo './assets/img/profile_pictures/'.$userPicture['user_picture'];
         ?>">
     </div>
-    <!-- <?php var_dump($userPicture['user_picture']);?> -->
+    <!-- <?php //var_dump($userPicture['user_picture']);?> -->
     <p>
         <button class="btn btn-outline-warning btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
             <img class="py-1" src="./assets/img/gear.svg" alt="Paramètres">
@@ -52,19 +53,18 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
                         <label for="pseudo" class="form-label " placeholder="Votre nouveau pseudo">Nouveau pseudo</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" name="currentPassword" id="currentPassword" class="form-control" placeholder="Mot de passe actuel">
+                        <input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="Mot de passe actuel">
                         <label for="currentPassword" class="form-label " placeholder="Mot de passe actuel">Confirmez votre mot de passe pour valider.</label>   
                     </div>
                     <button type="submit" class="col-2 btn btn-outline-warning" value="Ok">Ok</button>
                 </form>
-                    <!-- penser à modifier le $_SESSION avec le nouveau pseudo le cas échéant -->
                 <form action="userSettingsManagement.php" method="POST" class="">
                     <div class="form-floating my-2">
-                        <input type="text" name="currentPassword" id="currentPassword" class="form-control" placeholder="Mot de passe actuel">
+                        <input type="password" name="currentPassword" id="currentPassword" class="form-control" placeholder="Mot de passe actuel">
                         <label for="currentPassword" class="form-label " placeholder="Mot de passe actuel">Mot de passe actuel</label>   
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" name="newPassword" id="newPassword" class="form-control" placeholder="Nouveau mot de passe">
+                        <input type="password" name="newPassword" id="newPassword" class="form-control" placeholder="Nouveau mot de passe">
                         <label for="newPassword" class="form-label " placeholder="Votre nouveau mot de passe">Nouveau mot de passe</label>
                     </div>
                     <button type="submit" class="col-2 btn btn-outline-warning" value="Ok">Ok</button>
