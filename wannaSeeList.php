@@ -14,7 +14,7 @@ $query="SELECT * FROM l_users_movie_wanna WHERE movie_id=$movie_id AND user_id=$
     $stmt->execute();
     $checkifEmpty=$stmt->fetch();
     if(empty($checkifEmpty)){
-        echo "<a href='movies.php?movie_id=$movie_id' class='btn btn-warning' type='button'>
+        echo "<a href='movies.php?movie_id=$movie_id#movie_$movie_id' class='btn btn-warning' type='button'>
         <img src='./assets/img/clipboard2-plus";
     }else{
         echo "<a href='#movie_$movie_id' class='btn btn-warning' type='button'>
