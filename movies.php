@@ -19,8 +19,8 @@ require_once __DIR__ . '/db/pdo.php';
         }
 
         // var_dump($_SESSION);
-        if (isset($_GET['movie_id'])) {
-            $movie_ID = $_GET['movie_id'];
+        if (isset($_GET['wanna_id'])) {
+            $movie_ID = $_GET['wanna_id'];
             $query = "INSERT INTO l_users_movie_wanna VALUES (:userId, :movieID)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([
@@ -29,6 +29,18 @@ require_once __DIR__ . '/db/pdo.php';
             ]);
             $addToWannaSeeList = $stmt->fetch();
         }
+
+        if (isset($_GET['seen_id'])) {
+            $movie_ID = $_GET['seen_id'];
+            $query = "INSERT INTO l_users_movie_seen VALUES (:userId, :movieID)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([
+                'userId' => $user_id,
+                'movieID' => $movie_ID
+            ]);
+            $addToSeenList = $stmt->fetch();
+        }
+
         $stmt2 = $pdo->query("SELECT * FROM movie NATURAL JOIN l_director_movie NATURAL JOIN director");
 
         while ($row = $stmt2->fetch()) {
@@ -41,21 +53,15 @@ require_once __DIR__ . '/db/pdo.php';
                             <?php
                             if (!isset($user_id)) {
                                 echo "<button class='btn btn-warning' type='button' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
-                        <img src='./assets/img/clipboard2-plus.svg' title='Ajouter un film à la liste Déja vus'>
-                        </button>";
+                                    <img src='./assets/img/clipboard2-plus.svg' title='Ajouter un film à la liste Déja vus'>
+                                </button>
+                                <button class='btn btn-danger' type='button' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
+                                    <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
+                                </button>";
                             } else {
                                 require __DIR__ . '/wannaSeeList.php';
+                                require __DIR__ . '/seenList.php';
                             } ?>
-
-
-
-
-
-
-
-                            <button class="btn btn-danger" type="button">
-                                <img src="./assets/img/heart.svg" title="Ajouter un film à la liste 'A regarder'">
-                            </button>
                         </div>
                     </div>
                     <div class="border border-3 border-success col-6 d-flex flex-column justify-content-between align-items-end pt-2">
