@@ -31,6 +31,3 @@ if(move_uploaded_file($file['tmp_name'], $destination)) {
     redirect('dashboard.php?msg='.ConnexionMessages::SUCCESSFUL_FILE_REGISTRATION);
 }
 redirect('dashboard.php?msg='.ConnexionMessages::INVALID_FILE_REGISTRATION);
-
-
-?>

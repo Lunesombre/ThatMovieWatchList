@@ -9,18 +9,18 @@
 
 
 
-$query="SELECT * FROM l_users_movie_wanna WHERE movie_id=$movie_id AND user_id=$user_id";
-    $stmt=$pdo->prepare($query);
-    $stmt->execute();
-    $checkifEmpty=$stmt->fetch();
-    if(empty($checkifEmpty)){
-        echo "<a href='movies.php?movie_id=$movie_id#movie_$movie_id' class='btn btn-warning' type='button'>
+$query = "SELECT * FROM l_users_movie_wanna WHERE movie_id=$movie_id AND user_id=$user_id";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$checkifEmpty = $stmt->fetch();
+if (empty($checkifEmpty)) {
+    echo "<a href='movies.php?movie_id=$movie_id#movie_$movie_id' class='btn btn-warning' type='button'>
         <img src='./assets/img/clipboard2-plus";
-    }else{
-        echo "<a href='#movie_$movie_id' class='btn btn-warning' type='button'>
+} else {
+    echo "<a href='#movie_$movie_id' class='btn btn-warning' type='button'>
         <img src='./assets/img/clipboard2-plus-fill";
-    }
-    echo ".svg' title='Ajouter un film à la liste <em>Déja vus</em>'> 
+}
+echo ".svg' title='Ajouter un film à la liste <em>Déja vus</em>'> 
     </a>";
     
     // requête pour DELETE la ligne. TODO: voir comment la placer.

@@ -1,11 +1,11 @@
 <?php
-$title="Accueil";
-require_once __DIR__. '/classes/ConnexionMessages.php';
+$title = "Accueil";
+require_once __DIR__ . '/classes/ConnexionMessages.php';
 session_start();
-if (!isset($_SESSION['isConnected'])){
-    $_SESSION['isConnected']=false;
+if (!isset($_SESSION['isConnected'])) {
+    $_SESSION['isConnected'] = false;
 }
-$_SESSION['fromWhichPage']='index.php';
+$_SESSION['fromWhichPage'] = 'index.php';
 require_once __DIR__ . '/layout/header.php';
 ?>
 
@@ -23,4 +23,4 @@ require_once __DIR__ . '/layout/header.php';
 
 <?php
 var_dump($_SESSION);
-require_once __DIR__. '/layout/footer.php';
+require_once __DIR__ . '/layout/footer.php';

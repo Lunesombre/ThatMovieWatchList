@@ -9,14 +9,13 @@ class Movie
     private string $moviePoster;
 
     public function __construct(
-        int $movieId, 
-        string $movieTitle, 
+        int $movieId,
+        string $movieTitle,
         string $movieOriginalTitle,
         int $movieYear,
         string $movieOverview,
         string $moviePoster
-    )
-    {
+    ) {
         $this->movieId = $movieId;
         $this->movieTitle = $movieTitle;
         $this->movieOriginalTitle = $movieOriginalTitle;
@@ -24,10 +23,4 @@ class Movie
         $this->movieOverview = $movieOverview;
         $this->moviePoster = $moviePoster;
     }
-
-
-
-
-
-
 }

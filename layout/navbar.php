@@ -21,19 +21,19 @@
                     </button>";
                 } else {
                     // echo "href='../ThatMovieWatchList/login.php'>Connexion</a>";
-                    require_once __DIR__.'/connexionModal.php';
+                    require_once __DIR__ . '/connexionModal.php';
                     echo " <button class='nav-link text-bg-dark' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
                         Connexion
                     </button>";
                 } ?>
             </li>
-            <?php 
-            if ($_SESSION['isConnected']=== false){
+            <?php
+            if ($_SESSION['isConnected'] === false) {
                 echo '<li class="nav-item">
                 <a class="nav-link text-bg-dark" href="register.php">S\'enregistrer</a>
                 </li>';
             }
-            if ($_SESSION['isConnected']){
+            if ($_SESSION['isConnected']) {
                 echo '<li class="nav-item">
                 <a class="nav-link text-bg-dark" href="dashboard.php">Mon profil</a>
                 </li>';
@@ -49,5 +49,3 @@
         </form>
     </div>
 </nav>
-
-

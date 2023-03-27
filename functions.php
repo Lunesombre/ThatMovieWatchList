@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Redirect function : when called with an url , redirects to this url 
  *
@@ -10,6 +11,3 @@ function redirect(string $url): void
     header("Location:$url");
     die();
 }
-
-
-

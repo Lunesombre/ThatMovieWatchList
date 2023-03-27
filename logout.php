@@ -1,6 +1,6 @@
 <?php
 require_once 'functions.php';
 session_start();
-$_SESSION =[];
+$_SESSION = [];
 session_destroy();
 redirect('index.php');

@@ -1,7 +1,7 @@
 <?php
-$title="Register";
+$title = "Register";
 session_start();
-require_once __DIR__. '/classes/ConnexionMessages.php';
+require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/layout/header.php';
 
 ?>
@@ -11,7 +11,7 @@ require_once __DIR__ . '/layout/header.php';
             <?php echo ConnexionMessages::getConnexionMessage(intval($_GET['msg'])); ?>
         </div>
     <?php } ?>
-<div class="d-flex align-items-start">
+    <div class="d-flex align-items-start">
         <div class="d-flex  p-5">
             <form action="userRegistrationManagment.php" method="POST" class="register_form row py-2 gx-1 justify-content-center">
                 <div class="col-4 form-floating mb-2 px-1">
@@ -50,6 +50,6 @@ require_once __DIR__ . '/layout/header.php';
                 </div>
             </form>
         </div>
-</div>
+    </div>
 
 </div>
