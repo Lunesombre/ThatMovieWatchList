@@ -59,8 +59,8 @@ require_once __DIR__ . '/db/pdo.php';
                                     <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
                                 </button>";
                             } else {
-                                require __DIR__ . '/wannaSeeList.php';
                                 require __DIR__ . '/seenList.php';
+                                require __DIR__ . '/wannaSeeList.php';
                             } ?>
                         </div>
                     </div>
