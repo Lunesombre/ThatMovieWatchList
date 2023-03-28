@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'functions.php';
+require_once __DIR__.'/functions/redirect.php';
 require_once 'classes/ConnexionMessages.php';
 
 if (empty($_POST) || !isset($_POST['userNickname']) || !isset($_POST['password'])) {

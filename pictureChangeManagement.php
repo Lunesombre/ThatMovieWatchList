@@ -1,7 +1,7 @@
 <?php 
 session_start();
 var_dump($_SESSION);
-require_once __DIR__ .'/functions.php';
+require_once __DIR__.'/functions/redirect.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/db/pdo.php';
 // var_dump($_FILES);

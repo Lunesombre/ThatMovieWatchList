@@ -52,10 +52,10 @@ require_once __DIR__ . '/db/pdo.php';
                         <div class="text-end pt-1">
                             <?php
                             if (!isset($user_id)) {
-                                echo "<button class='btn btn-warning' type='button' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
+                                echo "<button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
                                     <img src='./assets/img/clipboard2-plus.svg' title='Ajouter un film à la liste Déja vus'>
                                 </button>
-                                <button class='btn btn-danger' type='button' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
+                                <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
                                     <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
                                 </button>";
                             } else {

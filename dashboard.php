@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'functions.php';
+require_once __DIR__.'/functions/redirect.php';
 if (!isset($_SESSION['pseudo'])) {
     redirect('index.php');
 }
