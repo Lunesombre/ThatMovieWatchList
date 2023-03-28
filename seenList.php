@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/functions/user.php';
 // ----------------------------------------------------------------
 // quand on clique sur le petit dossier
 // 1 - le dossier passe en version remplie
@@ -9,20 +10,31 @@
 
 
 
-$query = "SELECT * FROM l_users_movie_seen WHERE movie_id=$movie_id AND user_id=$user_id";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$checkifEmpty = $stmt->fetch();
-if (empty($checkifEmpty)) {
-    echo "<a href='movies.php?seen_id=$movie_id#movie_$movie_id' class='btn btn-warning' type='button'>
-        <img src='./assets/img/clipboard2-plus";
-} else {
-    echo "<a href='#movie_$movie_id' class='btn btn-warning' type='button'>
-        <img src='./assets/img/clipboard2-plus-fill";
+$svg = "clipboard2-plus.svg";
+$getParam = "?addToSeen=" . $movie_id;
+
+if (hasSeen($pdo, $movie_id, $user_id)) {
+    $svg = "clipboard2-plus-fill.svg";
+    $getParam = "?removeFromSeen=". $movie_id;
 }
-echo ".svg' title='Ajouter un film à la liste <em>Déja vus</em>'> 
-    </a>";
-    
-    // requête pour DELETE la ligne. TODO: voir comment la placer.
-    // $stmt3 = $pdo->query("DELETE FROM l_users_movie_seen WHERE (user_id=$user_id AND movie_id=$movie_id)");
-    // $delete=$stmt3->fetch();
+?>
+
+<a href="movies.php<?php echo $getParam; ?>#movie_<?php echo $movie_id ?>" class="btn btn-warning">
+    <img src='./assets/img/<?php echo $svg; ?>' title='Liste "Déja vus"'>
+</a>
+
+
+<?php
+// requête pour DELETE la ligne. TODO: voir comment la placer.
+    // changement d'idée : au lieu de rediriger vers movies.php avec un paramètre $_GET, je vais rediriger ici directement avec un $paramètre $_GET
+
+
+
+
+
+
+
+
+
+// $stmt3 = $pdo->query("DELETE FROM l_users_movie_seen WHERE (user_id=$user_id AND movie_id=$movie_id)");
+// $delete=$stmt3->fetch();

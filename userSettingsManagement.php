@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/functions.php';
+require_once __DIR__.'/functions/redirect.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 
 if (empty($_POST) || empty($_POST['pseudo']) && empty($_POST['newPassword'])) {

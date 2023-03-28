@@ -14,13 +14,11 @@
             </li>
             <li class="nav-item">
                 <?php
-                // echo '<a class="nav-link text-bg-dark" ';
                 if ($_SESSION['isConnected'] === true) {
                     echo "<button class='nav-link text-bg-dark'>
                     <a  class='text-bg-dark text-decoration-none' href='../ThatMovieWatchList/logout.php'>Me déconnecter</a>
                     </button>";
                 } else {
-                    // echo "href='../ThatMovieWatchList/login.php'>Connexion</a>";
                     require_once __DIR__ . '/connexionModal.php';
                     echo " <button class='nav-link text-bg-dark' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
                         Connexion
