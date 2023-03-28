@@ -11,20 +11,30 @@ require_once __DIR__ . '/functions/user.php';
 
 
 $svg = "clipboard2-plus.svg";
-$getParam = "?seen_id=" . $movie_id;
+$getParam = "?addToSeen=" . $movie_id;
 
 if (hasSeen($pdo, $movie_id, $user_id)) {
     $svg = "clipboard2-plus-fill.svg";
-    $getParam = "";
+    $getParam = "?removeFromSeen=". $movie_id;
 }
 ?>
 
 <a href="movies.php<?php echo $getParam; ?>#movie_<?php echo $movie_id ?>" class="btn btn-warning">
-    <img src='./assets/img/<?php echo $svg; ?>' title='Ajouter un film à la liste "Déja vus"'>
+    <img src='./assets/img/<?php echo $svg; ?>' title='Liste "Déja vus"'>
 </a>
 
 
 <?php
 // requête pour DELETE la ligne. TODO: voir comment la placer.
+    // changement d'idée : au lieu de rediriger vers movies.php avec un paramètre $_GET, je vais rediriger ici directement avec un $paramètre $_GET
+
+
+
+
+
+
+
+
+
 // $stmt3 = $pdo->query("DELETE FROM l_users_movie_seen WHERE (user_id=$user_id AND movie_id=$movie_id)");
 // $delete=$stmt3->fetch();

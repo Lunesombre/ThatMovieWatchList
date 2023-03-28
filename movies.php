@@ -19,8 +19,8 @@ require_once __DIR__ . '/db/pdo.php';
         }
 
         // var_dump($_SESSION);
-        if (isset($_GET['wanna_id'])) {
-            $movie_ID = $_GET['wanna_id'];
+        if (isset($_GET['addToWannaSee'])) {
+            $movie_ID = $_GET['addToWannaSee'];
             $query = "INSERT INTO l_users_movie_wanna VALUES (:userId, :movieID)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([
@@ -30,16 +30,38 @@ require_once __DIR__ . '/db/pdo.php';
             $addToWannaSeeList = $stmt->fetch();
         }
 
-        if (isset($_GET['seen_id'])) {
-            $movie_ID = $_GET['seen_id'];
-            $query = "INSERT INTO l_users_movie_seen VALUES (:userId, :movieID)";
+        if (isset($_GET['addToSeen'])) {
+            $movie_ID = $_GET['addToSeen'];
+            $query = "INSERT INTO l_users_movie_seen VALUES (:userID, :movieID)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([
-                'userId' => $user_id,
+                'userID' => $user_id,
                 'movieID' => $movie_ID
             ]);
             $addToSeenList = $stmt->fetch();
         }
+
+        if (isset($_GET['removeFromWannaSee'])) {
+            $movie_ID = $_GET['removeFromWannaSee'];
+            $query = "DELETE FROM l_users_movie_wanna WHERE (user_id=:userID AND movie_id=:movieID)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([
+                'userID' => $user_id,
+                'movieID' => $movie_ID
+            ]);
+        }
+
+        if (isset($_GET['removeFromSeen'])) {
+            $movie_ID = $_GET['removeFromSeen'];
+            $query = "DELETE FROM l_users_movie_seen WHERE (user_id=:userID AND movie_id=:movieID)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([
+                'userID' => $user_id,
+                'movieID' => $movie_ID
+            ]);
+        }
+            
+
 
         $stmt2 = $pdo->query("SELECT * FROM movie NATURAL JOIN l_director_movie NATURAL JOIN director");
 
