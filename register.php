@@ -41,10 +41,6 @@ require_once __DIR__ . '/layout/header.php';
                     <label for="password " class="form-label">Votre mot de passe</label>
                 </div>
                 <br>
-                <div class="col-8 form-floating pt-1 px-1">
-                    <input name="picture" class="form-control mb-2" type="file" id="picture">
-                    <label for="picture" class="form-label " placeholder="image de profil">Choisissez votre image de profil</label>
-                </div>
                 <div class="col-8 text-end px-1">
                     <button type="submit" class="col-2 btn btn-primary">Envoyer</button>
                 </div>

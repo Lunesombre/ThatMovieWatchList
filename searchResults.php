@@ -8,7 +8,6 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/layout/header.php';
 
 $search = strtolower($_GET['search']);
-var_dump($search);
 
 $query = "SELECT * FROM movie WHERE (movie_name LIKE :search OR movie_name_ov LIKE :search ) ORDER BY movie_id LIMIT 50";
 $query2 = "SELECT * FROM actor WhERE (actor_name LIKE :search OR actor_firstname LIKE :search) ORDER BY actor_name LIMIT 50";
@@ -41,7 +40,8 @@ if (empty($movieResults) && empty($actorResults) && empty($directorResults)) {
         Aucun résultat ne correspond à votre recherche
     </div>
 <?php } ?>
-<div class="container d-flex flex-column flex-wrap align-item-start">
+<div class="container background d-flex flex-column flex-wrap align-item-start">
+        <h1>Vous avez recherché : "<?php echo $search ?>"</h1>
     <div>
         <?php
         if (!empty($movieResults)) { ?>
@@ -56,11 +56,10 @@ if (empty($movieResults) && empty($actorResults) && empty($directorResults)) {
                             </div>
                         </div>
                     </div>
-            <?php }
-            } else {
-                echo "Pas de films correspondants";
-            } ?>
+                <?php } ?>
             </div>
+        <?php } ?>
+
     </div>
     <div>
         <?php if (!empty($actorResults)) { ?>
@@ -76,15 +75,13 @@ if (empty($movieResults) && empty($actorResults) && empty($directorResults)) {
                                 echo $result['actor_name'] ?>
                             </h3>
                             <div class="minipic rounded">
-                                <img <?php echo $result['actor_picture'] ?> class="img-fluid rounded" alt="<?php echo $result['actor_name'] ?> picture">
+                                <img src="<?php echo $result['actor_picture'] ?>" class="img-fluid rounded" alt="<?php echo $result['actor_name'] ?> picture">
                             </div>
                         </div>
                     </div>
-            <?php }
-            } else {
-                echo "Pas d'acteurs correspondants";
-            } ?>
+                <?php } ?>
             </div>
+        <?php } ?>
     </div>
     <div>
         <?php
@@ -101,15 +98,13 @@ if (empty($movieResults) && empty($actorResults) && empty($directorResults)) {
                                 echo $result['director_name'] ?>
                             </h3>
                             <div class="minipic rounded">
-                                <img <?php echo $result['director_picture'] ?> class="img-fluid rounded" alt="<?php echo $result['director_name'] ?> picture">
+                                <img src="<?php echo $result['director_picture'] ?>" class="img-fluid rounded" alt="<?php echo $result['director_name'] ?> picture">
                             </div>
                         </div>
                     </div>
-            <?php }
-            } else {
-                echo "Pas de réalisateurs correspondants";
-            } ?>
+                <?php } ?>
             </div>
+        <?php } ?>
     </div>
 </div>
 

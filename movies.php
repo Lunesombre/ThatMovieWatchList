@@ -73,26 +73,26 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
 
         while ($row = $stmt2->fetch()) {
             $movie_id = $row['movie_id']; ?>
-            <div id="<?php echo 'movie_' . $movie_id ?>" class="movie_card row d-flex border border-4 border-warning border-opacity-75 rounded-4 bg-warning-subtle m-2 ">
-                <div class="movie_card_upperpart row pb-3 border border-3 align-items-evenly mx-auto">
-                    <div class="col-6 pt-2 border border-3 border-primary p-3">
+            <div id="<?php echo 'movie_' . $movie_id ?>" class="movie_card row d-flex rounded-4 m-2 ">
+                <div class="movie_card_upperpart row pb-3 align-items-evenly mx-auto">
+                    <div class="col-6 p-3">
                         <img class="poster img-fluid rounded-4" <?php echo $row['movie_poster'] ?>>
                         <div class="text-end pt-1">
                             <?php
-                            if (!isset($user_id)) {
-                                echo "<button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
+                            if (!isset($user_id)) { ?>
+                                <button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
                                     <img src='./assets/img/clipboard2-plus.svg' title='Ajouter un film à la liste Déja vus'>
                                 </button>
                                 <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
                                     <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
-                                </button>";
-                            } else {
+                                </button>
+                            <?php }else{
                                 require __DIR__ . '/seenList.php';
                                 require __DIR__ . '/wannaSeeList.php';
                             } ?>
                         </div>
                     </div>
-                    <div class="border border-3 border-success col-6 d-flex flex-column justify-content-between align-items-end pt-2">
+                    <div class="col-6 d-flex flex-column justify-content-between align-items-end pt-2">
                         <h3 class="text-center">
                             <?php
                             echo $row['movie_name'];

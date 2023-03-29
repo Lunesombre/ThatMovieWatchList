@@ -17,11 +17,7 @@ $userEmail = $_POST['email'];
 $userPassword = $_POST['password'];
 $userBirthdate = $_POST['birthdate'];
 $userPseudo = $_POST['pseudo'];
-if (empty($_POST['picture'])) {
-    $userPicture = null;
-} else {
-    $userPicture = $_POST['picture'];
-}
+
 /*
 - Vérifier si certaines valeurs sont déjà dans la base de données pour éviter que les utilisateurs puissent les utiliser plusieurs fois : le pseudo et l'email devront être uniques (ces colonnes ont bien l'index UNIQUE dans la base de données)
 - Renvoyer un message d'erreur adapté si l'un ou l'autre de ces critères n'est pas rempli
@@ -51,7 +47,7 @@ if ($testPseudoUsage) {
 - Hasher le mot de passe
 - Si tout est bon, envoyer les données vers ma base de données avec une requête préparés
 */
-$query = "INSERT INTO users (user_nickname, user_email, user_password, user_name, user_firstname, user_birthdate, user_picture) VALUES (:pseudo, :email, :password, :name, :firstname, :birthdate, :picture)";
+$query = "INSERT INTO users (user_nickname, user_email, user_password, user_name, user_firstname, user_birthdate) VALUES (:pseudo, :email, :password, :name, :firstname, :birthdate)";
 
 $stmt = $pdo->prepare($query);
 
@@ -62,7 +58,6 @@ $insertNewUser = $stmt->execute([
     'name' => $userName,
     'firstname' => $userFirstname,
     'birthdate' => $userBirthdate,
-    'picture' => $userPicture
 ]);
 if ($insertNewUser === false) {
     redirect('register.php?msg=' . ConnexionMessages::REGISTRATION_FAILURE);
