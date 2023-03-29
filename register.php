@@ -51,5 +51,5 @@ require_once __DIR__ . '/layout/header.php';
             </form>
         </div>
     </div>
-
 </div>
+<?php require_once __DIR__ . '/layout/footer.php';

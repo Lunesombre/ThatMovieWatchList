@@ -4,11 +4,17 @@ session_start();
 $_SESSION['fromWhichPage'] = 'movies.php';
 require_once __DIR__ . '/layout/header.php';
 require_once __DIR__ . '/db/pdo.php';
+require_once __DIR__ . '/classes/ConnexionMessages.php';
 ?>
 
-<div class="container-fluid p-5">
-    <div class="row justify-content-evenly">
+<div class="container-fluid p-5 d-flex flex-column justify-content-center">
+    <?php if (array_key_exists('msg', $_GET)) { ?>
+        <div class="alert alert-warning my-1 mx-auto" role="alert">
+            <?php echo ConnexionMessages::getConnexionMessage(intval($_GET['msg'])); ?>
+        </div>
+    <?php } ?>
 
+    <div class="row justify-content-evenly">
         <?php
         if (isset($_SESSION['pseudo'])) {
             $pseudo = $_SESSION['pseudo'];
@@ -60,7 +66,7 @@ require_once __DIR__ . '/db/pdo.php';
                 'movieID' => $movie_ID
             ]);
         }
-            
+
 
 
         $stmt2 = $pdo->query("SELECT * FROM movie NATURAL JOIN l_director_movie NATURAL JOIN director");
@@ -81,8 +87,8 @@ require_once __DIR__ . '/db/pdo.php';
                                     <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
                                 </button>";
                             } else {
-                                require __DIR__ . '/wannaSeeList.php';
                                 require __DIR__ . '/seenList.php';
+                                require __DIR__ . '/wannaSeeList.php';
                             } ?>
                         </div>
                     </div>
