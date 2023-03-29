@@ -14,6 +14,7 @@ class ConnexionMessages
     public const PROFILE_UPDATE_FAILURE = 9;
     public const PROFILE_UPDATE_SUCCESS = 10;
     public const WRONG_PASSWORD = 11;
+    public const SEARCH_ERROR = 12;
 
 
 
@@ -52,6 +53,9 @@ class ConnexionMessages
                 break;
             case ConnexionMessages::WRONG_PASSWORD:
                 return "Erreur de mot de passe";
+                break;
+            case ConnexionMessages::SEARCH_ERROR:
+                return "Erreur de recherche";
                 break;
             default:
                 return "Une erreur est survenue, merci de contacter l'administrateur.";

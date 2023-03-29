@@ -30,5 +30,5 @@ if (password_verify($password, $hashedPassword) === false) {
 
 $_SESSION['isConnected'] = true;
 $_SESSION['pseudo'] = $login;
-$goBackToThatPage = $_SESSION['fromWhichPage'];
-redirect($goBackToThatPage . '?msg=' . ConnexionMessages::CONNEXION_IS_VALID);
+$BackToThatPage = $_SESSION['fromWhichPage'];
+redirect($BackToThatPage . '?msg=' . ConnexionMessages::CONNEXION_IS_VALID);

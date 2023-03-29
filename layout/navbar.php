@@ -41,8 +41,8 @@
                 <a class="nav-link text-bg-dark" href="movies.php">Parcourir les films</a>
             </li>
         </ul>
-        <form class="form-inline d-flex col-4" role="search">
-            <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+        <form class="form-inline d-flex col-4" role="search" method="GET" action="searchResults.php">
+            <input class="form-control me-2" name="search" type="search" placeholder="Rechercher" aria-label="Search">
             <button class="btn btn-outline-success me-2" type="submit">Ok</button>
         </form>
     </div>
