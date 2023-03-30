@@ -9,9 +9,9 @@ require_once __DIR__ . '/layout/header.php';
 
 $search = strtolower($_GET['search']);
 
-$query = "SELECT * FROM movie WHERE (movie_name LIKE :search OR movie_name_ov LIKE :search ) ORDER BY movie_id LIMIT 50";
-$query2 = "SELECT * FROM actor WhERE (actor_name LIKE :search OR actor_firstname LIKE :search) ORDER BY actor_name LIMIT 50";
-$query3 = "SELECT * FROM director WhERE (director_name LIKE :search OR director_firstname LIKE :search) ORDER BY director_name LIMIT 50";
+$query = "SELECT * FROM movie WHERE (movie_name LIKE :search OR movie_name_ov LIKE :search ) ORDER BY movie_id";
+$query2 = "SELECT * FROM actor WhERE (actor_name LIKE :search OR actor_firstname LIKE :search) ORDER BY actor_name";
+$query3 = "SELECT * FROM director WhERE (director_name LIKE :search OR director_firstname LIKE :search) ORDER BY director_name";
 
 $stmt = $pdo->prepare($query);
 $stmt->execute([
@@ -59,7 +59,6 @@ if (empty($movieResults) && empty($actorResults) && empty($directorResults)) {
                 <?php } ?>
             </div>
         <?php } ?>
-
     </div>
     <div>
         <?php if (!empty($actorResults)) { ?>

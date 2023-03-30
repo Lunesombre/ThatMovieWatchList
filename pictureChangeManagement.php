@@ -6,11 +6,9 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/db/pdo.php';
 // var_dump($_FILES);
 
-if(isset($_FILES['picture'])){
+if(isset($_FILES['picture']) && $_FILES['picture']['error']=== UPLOAD_ERR_OK){
     $file = $_FILES['picture'];
-}
-$error=$file['error'];
-if($error!==0){
+}else{
     redirect('dashboard.php?msg='.ConnexionMessages::INVALID_FILE_REGISTRATION);
 }
 // prévoir de mieux gérer les différentes erreurs possibles.
