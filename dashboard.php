@@ -92,37 +92,37 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
                 <?php
                 $query = "SELECT * FROM movie WHERE movie_id IN (SELECT movie_id FROM l_users_movie_wanna WHERE l_users_movie_wanna.user_id =$user_id)";
                 $stmt = $pdo->query($query);
-                if(empty($moviesOnWannaSeeList = $stmt->fetchAll())){ ?>
+                if (empty($moviesOnWannaSeeList = $stmt->fetchAll())) { ?>
                     <div> Vous n'avez aucun film sur votre liste.</div>
                 <?php }
                 foreach ($moviesOnWannaSeeList as $row) { ?>
-                    <div class="searchResults d-flex align-items-around p-3 m-2 rounded-3">
+                    <a href="movie.php?movie_id=<?php echo $row['movie_id'] ?>" class="searchResults text-decoration-none d-flex align-items-around p-3 m-2 rounded-3">
                         <div class="d-flex flex-column justify-content-between">
                             <h3><?php echo $row['movie_name'] ?></h3>
                             <div class="minipic rounded">
                                 <img <?php echo $row['movie_poster'] ?> class="img-fluid rounded" alt="poster du film <?php echo $row['movie_name'] ?>">
                             </div>
                         </div>
-                    </div>
+                    </a>
                 <?php } ?>
             </div>
             <h2 class="text-center mt-5">Films déjà vus.</h2>
             <div class="d-flex flex-wrap justify-content-evenly mb-5">
                 <?php $query = "SELECT * FROM movie WHERE movie_id IN (SELECT movie_id FROM l_users_movie_seen WHERE user_id =$user_id)";
                 $stmt = $pdo->query($query);
-                if(empty($moviesAlreadySeen = $stmt->fetchAll())){ ?>
+                if (empty($moviesAlreadySeen = $stmt->fetchAll())) { ?>
                     <div> Vous n'avez vu aucun film ?</div>
                 <?php }
                 foreach ($moviesAlreadySeen as $row) { ?>
-                    <div class="searchResults d-flex align-items-around p-3 m-2 rounded-3">
+                    <a href="movie.php?movie_id=<?php echo $row['movie_id'] ?>" class="searchResults text-decoration-none d-flex align-items-around p-3 m-2 rounded-3">
                         <div class="d-flex flex-column justify-content-between">
                             <h3><?php echo $row['movie_name'] ?></h3>
                             <div class="minipic rounded">
                                 <img <?php echo $row['movie_poster'] ?> class="img-fluid rounded" alt="poster du film <?php echo $row['movie_name'] ?>">
                             </div>
                         </div>
-                    </div>
-                    <?php }?>
+                    </a>
+                <?php } ?>
             </div>
         </div>
     </div>
