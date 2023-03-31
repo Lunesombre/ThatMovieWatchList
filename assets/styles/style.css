@@ -59,3 +59,6 @@ html body{
     max-height : 220px;
     
 }
+.movie_poster{
+    max-width: 600px;
+}
