@@ -52,7 +52,7 @@ if (isset($actor_id)) {
                         <div class="d-flex flex-column justify-content-between">
                             <h3><?php echo $result['movie_name'] ?></h3>
                             <div class="minipic rounded">
-                                <img <?php echo $result['movie_poster'] ?> class="img-fluid rounded" alt="poster du film <?php echo $result['movie_name'] ?>">
+                                <img src="<?php echo $result['movie_poster'] ?>" class="img-fluid rounded" alt="poster du film <?php echo $result['movie_name'] ?>">
                             </div>
                         </div>
                     </a>
@@ -104,7 +104,7 @@ if (isset($actor_id)) {
                         <div class="d-flex flex-column justify-content-between">
                             <h3><?php echo $result['movie_name'] ?></h3>
                             <div class="minipic rounded">
-                                <img <?php echo $result['movie_poster'] ?> class="img-fluid rounded" alt="poster du film <?php echo $result['movie_name'] ?>">
+                                <img src="<?php echo $result['movie_poster'] ?>" class="img-fluid rounded" alt="poster du film <?php echo $result['movie_name'] ?>">
                             </div>
                         </div>
                     </a>

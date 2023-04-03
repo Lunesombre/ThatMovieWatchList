@@ -15,7 +15,9 @@ html body{
 }
 .movie_card{
     max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(39, 36, 36, 0.6);
+    box-shadow: 3px 2px 15px rgb(23, 23, 23);
+    color : bisque;
 }
 .poster{
     border : solid black 1px;

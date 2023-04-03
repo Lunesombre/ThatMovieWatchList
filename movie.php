@@ -28,7 +28,7 @@ require_once __DIR__ . '/layout/header.php';
 <div class="container d-flex">
     <div class="m-5">
         <div class="movie_poster">
-            <img <?php echo $movie['movie_poster'] ?> class="img-fluid rounded-5">
+            <img src="<?php echo $movie['movie_poster'] ?>" alt="Poster du film <?php echo $movie['movie_name'] ?>" class="img-fluid rounded-5">
         </div>
     </div>
     <div class="m-5">
@@ -84,12 +84,25 @@ require_once __DIR__ . '/layout/header.php';
             </div>
         </div>
         <div class="d-flex justify-content-end">
-        <?php if ($backToThatPage !== 'dashboard.php') { ?>
+            <?php switch ($backToThatPage) { 
+                case ($backToThatPage === 'dashboard.php'): ?>
+                    <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
+                    <?php break;
+                case($backToThatPage === 'movies.php'):?>
+                    <a href="movies.php" class="align-self-end btn btn-outline-dark btn-sm">Revenir à 'parcourir les films'</a>
+                    <?php break;
+                default : ?>
                     <a href='searchResults.php' class="align-self-end btn btn-outline-dark btn-sm">Retour à la page de recherche</a>
-                    <?php } else { ?>
-                        <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
-                <?php } ?>
-            </div>
+                    <?php break; 
+                } ?>
+        </div>
+        <!-- <div class="d-flex justify-content-end"> -->
+            <?php // if ($backToThatPage !== 'dashboard.php') { ?>
+                <!-- <a href='searchResults.php' class="align-self-end btn btn-outline-dark btn-sm">Retour à la page de recherche</a> -->
+            <?php // } else { ?>
+                <!-- <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a> -->
+            <?php //} ?>
+        <!-- </div> -->
     </div>
 
 </div>

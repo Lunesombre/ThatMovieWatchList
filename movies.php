@@ -6,7 +6,7 @@ require_once __DIR__ . '/layout/header.php';
 require_once __DIR__ . '/db/pdo.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/functions/user.php';
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 ?>
@@ -21,7 +21,7 @@ if(isset($_SESSION['user_id'])){
     <div class="row justify-content-evenly">
         <?php
         // faire un switchcase pour récupérer le paramètre du $_GET et définir la colonne ciblée dans la requête.
-        if(!empty($_GET)){
+        if (!empty($_GET)) {
             switch ($_GET) {
                 case (isset($_GET['addToWannaSee'])):
                     $movie_ID = $_GET['addToWannaSee'];
@@ -73,28 +73,30 @@ if(isset($_SESSION['user_id'])){
 
 
 
-        $stmt = $pdo->query("SELECT * FROM movie NATURAL JOIN l_director_movie NATURAL JOIN director");
+        $stmt = $pdo->query("SELECT * FROM movie");
 
         while ($row = $stmt->fetch()) {
             $movie_id = $row['movie_id']; ?>
             <div id="<?php echo 'movie_' . $movie_id ?>" class="movie_card row d-flex rounded-4 m-2 ">
                 <div class="movie_card_upperpart row pb-3 align-items-evenly mx-auto">
                     <div class="col-6 p-3">
-                        <img class="poster img-fluid rounded-4" src="<?php echo $row['movie_poster'] ?>" alt="Poster <?php echo $row['movie_name'] ?>">
-                        <div class="text-end pt-1">
-                            <?php
-                            if (!isset($user_id)) { ?>
-                                <button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
-                                    <img src='./assets/img/clipboard2-plus.svg' title='Ajouter un film à la liste Déja vus'>
-                                </button>
-                                <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
-                                    <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
-                                </button>
-                            <?php } else {
-                                require __DIR__ . '/seenList.php';
-                                require __DIR__ . '/wannaSeeList.php';
-                            } ?>
-                        </div>
+                        <a href="movie.php?movie_id=<?php echo $movie_id ?>" class="text-decoration-non">
+                            <img class="poster img-fluid rounded-4" src="<?php echo $row['movie_poster'] ?>" alt="Poster <?php echo $row['movie_name'] ?>">
+                            <div class="text-end pt-1">
+                                <?php
+                                if (!isset($user_id)) { ?>
+                                    <button class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
+                                        <img src='./assets/img/clipboard2-plus.svg' title='Ajouter un film à la liste Déja vus'>
+                                    </button>
+                                    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#Modale_connexion'>
+                                        <img src='./assets/img/heart.svg' title='Ajouter un film à la liste A regarder'>
+                                    </button>
+                                <?php } else {
+                                    require __DIR__ . '/seenList.php';
+                                    require __DIR__ . '/wannaSeeList.php';
+                                } ?>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-6 d-flex flex-column justify-content-between align-items-end pt-2">
                         <h3 class="text-center">
@@ -110,8 +112,12 @@ if(isset($_SESSION['user_id'])){
                             </h5>
                             <div class="">
                                 <?php
-                                echo substr($row['director_firstname'], 0, 1) . '. ' . $row['director_name'];
-                                ?>
+                                $query2 = "SELECT * FROM l_director_movie NATURAL JOIN director WHERE movie_id = $movie_id";
+                                $stmt2 = $pdo->query($query2);
+                                $directors = $stmt2->fetchAll();
+                                foreach ($directors as $director) {
+                                    echo substr($director['director_firstname'], 0, 1) . '. ' . $director['director_name'] . '</br>';
+                                } ?>
                             </div>
                             <div class="">
                                 <?php
@@ -121,15 +127,15 @@ if(isset($_SESSION['user_id'])){
                         </div>
                     </div>
                 </div>
-                <div class="movie_card_lowerpart mx-auto mt-3 ">
+                <a href="movie.php?movie_id=<?php echo $movie_id ?>" class="text-decoration-none movie_card_lowerpart mx-auto mt-3">
                     <p class="p-3 movie_overview rounded-3">
                         <?php
                         $truncatedOverview = substr($row['movie_overview'], 0, 210); // tronque si ça dépasse 210 caractères
-                        $paddedTo210Overview= str_pad($truncatedOverview, 210, " "); // rajoute des espaces si nécessaire pour atteindre 210 caractères
+                        $paddedTo210Overview = str_pad($truncatedOverview, 210, " "); // rajoute des espaces si nécessaire pour atteindre 210 caractères
                         echo str_pad($paddedTo210Overview, 213, '.'); // rajoute '...' pour finir
                         ?>
                     </p>
-                </div>
+                </a>
             </div>
         <?php
         }
