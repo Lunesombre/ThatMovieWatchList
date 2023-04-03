@@ -11,7 +11,7 @@ if(isset($_FILES['picture']) && $_FILES['picture']['error']=== UPLOAD_ERR_OK){
 }else{
     redirect('dashboard.php?msg='.ConnexionMessages::INVALID_FILE_REGISTRATION);
 }
-// prévoir de mieux gérer les différentes erreurs possibles.
+// TODO: prévoir de mieux gérer les différentes erreurs possibles.
 
 $filename=$file['name'];
 

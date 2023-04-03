@@ -60,10 +60,10 @@ if (isset($actor_id)) {
             </div>
             </p>
             <div class="d-flex justify-content-end">
-                <?php if ($backToThatPage = 'dashboard.php') { ?>
-                    <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
-                <?php } else { ?>
+                <?php if ($backToThatPage !== 'dashboard.php') { ?>
                     <a href='searchResults.php' class="align-self-end btn btn-outline-dark btn-sm">Retour à la page de recherche</a>
+                    <?php } else { ?>
+                        <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
                 <?php } ?>
             </div>
         </div>
@@ -112,30 +112,15 @@ if (isset($actor_id)) {
             </div>
             </p>
             <div class="d-flex justify-content-end">
-                <?php if ($backToThatPage = 'dashboard.php') { ?>
-                    <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
-                <?php } else { ?>
+            <?php if ($backToThatPage !== 'dashboard.php') { ?>
                     <a href='searchResults.php' class="align-self-end btn btn-outline-dark btn-sm">Retour à la page de recherche</a>
+                    <?php } else { ?>
+                        <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
                 <?php } ?>
             </div>
         </div>
     </div>
 <?php } ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 require_once __DIR__ . '/layout/footer.php';

@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions/user.php';
 $svg = "clipboard2-plus.svg";
 $getParam = "?addToSeen=" . $movie_id;
 
-if (hasSeen($pdo, $movie_id, $user_id)) {
+if (userHasSeen($pdo, $movie_id, $user_id)) {
     $svg = "clipboard2-plus-fill.svg";
     $getParam = "?removeFromSeen=" . $movie_id;
 }

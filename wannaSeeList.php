@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions/user.php';
 $svg = "heart.svg";
 $getParam = "?addToWannaSee=" . $movie_id;
 
-if (wannaSee($pdo, $movie_id, $user_id)) {
+if (userWannaSee($pdo, $movie_id, $user_id)) {
     $svg = "heart-fill.svg";
     $getParam = "?removeFromWannaSee=" . $movie_id;
 } ?>

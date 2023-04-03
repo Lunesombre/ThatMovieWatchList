@@ -13,7 +13,7 @@ require_once __DIR__ . '/db/pdo.php';
 $login = $_POST['userNickname'];
 $password = $_POST['password'];
 
-$stmt = $pdo->prepare("SELECT user_password FROM users WHERE user_nickname=:pseudo");
+$stmt = $pdo->prepare("SELECT user_password, user_id FROM users WHERE user_nickname=:pseudo");
 
 $stmt->execute(["pseudo" => $login]);
 $userPasswordCheck = $stmt->fetch();
@@ -30,4 +30,5 @@ if (password_verify($password, $hashedPassword) === false) {
 
 $_SESSION['isConnected'] = true;
 $_SESSION['pseudo'] = $login;
+$_SESSION['user_id'] = $userPasswordCheck['user_id'];
 redirect($BackToThatPage . '?msg=' . ConnexionMessages::CONNEXION_IS_VALID);

@@ -106,7 +106,7 @@ require_once __DIR__ . '/classes/ConnexionMessages.php';
                     </a>
                 <?php } ?>
             </div>
-            <h2 class="text-center mt-5">Films déjà vus.</h2>
+            <h2 class="text-center mt-5">Films déjà vus</h2>
             <div class="d-flex flex-wrap justify-content-evenly mb-5">
                 <?php $query = "SELECT * FROM movie WHERE movie_id IN (SELECT movie_id FROM l_users_movie_seen WHERE user_id =$user_id)";
                 $stmt = $pdo->query($query);

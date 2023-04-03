@@ -21,9 +21,9 @@ if (!empty($_POST['newPassword'])) {
     $newPassword = $_POST['newPassword'];
     echo 'nouveau mot de passe ok';
 }
-var_dump($newPseudo);
-// var_dump($newPassword);
-var_dump($_SESSION);
+// var_dump($newPseudo);
+// // var_dump($newPassword);
+// var_dump($_SESSION);
 //vérification du mot de passe actuel
 $stmt = $pdo->prepare("SELECT user_password FROM users WHERE user_nickname=:nickname");
 $stmt->execute(['nickname' => $_SESSION['pseudo']]);
