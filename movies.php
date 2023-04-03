@@ -26,7 +26,7 @@ if(isset($_SESSION['user_id'])){
                 case (isset($_GET['addToWannaSee'])):
                     $movie_ID = $_GET['addToWannaSee'];
                     $table = 'l_users_movie_wanna';
-                    addToListsInDatabase($pdo, $user_id, $movie_ID, $$table);
+                    addToListsInDatabase($pdo, $user_id, $movie_ID, $table);
                     break;
                 case (isset($_GET['addToSeen'])):
                     $movie_ID = $_GET['addToSeen'];
@@ -110,7 +110,7 @@ if(isset($_SESSION['user_id'])){
                             </h5>
                             <div class="">
                                 <?php
-                                echo $row['director_firstname'] . ' ' . $row['director_name'];
+                                echo substr($row['director_firstname'], 0, 1) . '. ' . $row['director_name'];
                                 ?>
                             </div>
                             <div class="">

@@ -15,6 +15,7 @@ class ConnexionMessages
     public const PROFILE_UPDATE_SUCCESS = 10;
     public const WRONG_PASSWORD = 11;
     public const SEARCH_ERROR = 12;
+    public const ALL_FIELDS_MUST_BE_COMPLETED = 13;
 
 
 
@@ -56,6 +57,9 @@ class ConnexionMessages
                 break;
             case ConnexionMessages::SEARCH_ERROR:
                 return "Erreur de recherche";
+                break;
+            case ConnexionMessages::ALL_FIELDS_MUST_BE_COMPLETED:
+                return "Tout les champs doivent être correctement complétés.";
                 break;
             default:
                 return "Une erreur est survenue, merci de contacter l'administrateur.";

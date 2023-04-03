@@ -3,7 +3,7 @@ require_once __DIR__ . '/functions/redirect.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 
 if (empty($_POST) || !isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['birthdate']) || !isset($_POST['email']) || !isset($_POST['pseudo']) || !isset($_POST['password'])) {
-    redirect('register.php');
+    redirect('register.php?msg=' . ConnexionMessages::ALL_FIELDS_MUST_BE_COMPLETED);
 }
 
 require_once __DIR__ . '/db/pdo.php';
