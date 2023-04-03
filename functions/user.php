@@ -21,8 +21,9 @@ function userWannaSee(PDO $pdo, int $movie_id, int $user_id): bool
     return $stmt->fetch() !==false;
 }
 
-function addToListsInDatabase(PDO $pdo, int $user_id, int $movie_ID,  string $query) :bool
+function addToListsInDatabase(PDO $pdo, int $user_id, int $movie_ID,  string $table) :bool
 {
+    $query ="INSERT INTO $table VALUES (:userID, :movieID)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([
         'userID' => $user_id,
@@ -31,8 +32,9 @@ function addToListsInDatabase(PDO $pdo, int $user_id, int $movie_ID,  string $qu
     return $stmt->fetch() !==false;
 }
 
-function removeFromListsInDB(PDO $pdo, int $user_id, int $movie_ID,  string $query) :bool
+function removeFromListsInDB(PDO $pdo, int $user_id, int $movie_ID,  string $table) :bool
 {
+    $query = "DELETE FROM $table WHERE (user_id=:userID AND movie_id=:movieID)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([
         'userID' => $user_id,

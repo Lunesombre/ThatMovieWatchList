@@ -1,26 +1,53 @@
 <?php
 class Movie
 {
-    private int $movieId;
-    private string $movieTitle;
-    private string $movieOriginalTitle;
-    private int $movieYear;
-    private string $movieOverview;
-    private string $moviePoster;
-
     public function __construct(
-        int $movieId,
-        string $movieTitle,
-        string $movieOriginalTitle,
-        int $movieYear,
-        string $movieOverview,
-        string $moviePoster
+        private string $movieTitle,
+        private string $movieOriginalTitle,
+        private int $movieYear,
+        private string $movieOverview,
+        private string $moviePoster,
     ) {
-        $this->movieId = $movieId;
-        $this->movieTitle = $movieTitle;
-        $this->movieOriginalTitle = $movieOriginalTitle;
-        $this->movieYear = $movieYear;
-        $this->movieOverview = $movieOverview;
-        $this->moviePoster = $moviePoster;
+
     }
+
+        /**
+         * Get the value of movieTitle
+         */ 
+        public function getMovieTitle()
+        {
+                return $this->movieTitle;
+        }
+
+        /**
+         * Get the value of movieOriginalTitle
+         */ 
+        public function getMovieOriginalTitle()
+        {
+                return $this->movieOriginalTitle;
+        }
+
+        /**
+         * Get the value of movieYear
+         */ 
+        public function getMovieYear()
+        {
+                return $this->movieYear;
+        }
+
+        /**
+         * Get the value of movieOverview
+         */ 
+        public function getMovieOverview()
+        {
+                return $this->movieOverview;
+        }
+
+        /**
+         * Get the value of moviePoster
+         */ 
+        public function getMoviePoster()
+        {
+                return $this->moviePoster;
+        }
 }

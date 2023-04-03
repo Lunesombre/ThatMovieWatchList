@@ -6,6 +6,7 @@ require_once __DIR__ . '/db/pdo.php';
 require_once __DIR__ . '/functions/redirect.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/layout/header.php';
+require_once __DIR__ . '/functions/search.php';
 
 if (!isset($_GET['search'])) {
     $search = '';
@@ -13,31 +14,16 @@ if (!isset($_GET['search'])) {
     $search = strtolower($_GET['search']);
 }
 
-
-$query = "SELECT * FROM movie WHERE (movie_name LIKE :search OR movie_name_ov LIKE :search ) ORDER BY movie_id";
-$query2 = "SELECT * FROM actor WhERE (actor_name LIKE :search OR actor_firstname LIKE :search) ORDER BY actor_name";
-$query3 = "SELECT * FROM director WhERE (director_name LIKE :search OR director_firstname LIKE :search) ORDER BY director_name";
-
-$stmt = $pdo->prepare($query);
-$stmt->execute([
-    'search' => '%' . $search . '%'
-]);
-
-$stmt2 = $pdo->prepare($query2);
-$stmt2->execute([
-    'search' => '%' . $search . '%'
-]);
-
-$stmt3 = $pdo->prepare($query3);
-$stmt3->execute([
-    'search' => '%' . $search . '%'
-]);
-
 $BackToThatPage = $_SESSION['fromWhichPage'];
 
-$movieResults = $stmt->fetchAll();
-$actorResults = $stmt2->fetchAll();
-$directorResults = $stmt3->fetchAll(); ?>
+$movieSearch = "SELECT * FROM movie WHERE (movie_name LIKE :search OR movie_name_ov LIKE :search ) ORDER BY movie_name"; 
+$actorSearch = "SELECT * FROM actor WhERE (actor_name LIKE :search OR actor_firstname LIKE :search) ORDER BY actor_name";
+$directorSearch = "SELECT * FROM director WhERE (director_name LIKE :search OR director_firstname LIKE :search) ORDER BY director_name";
+
+$movieResults=search($pdo,$movieSearch,$search);
+$actorResults=search($pdo,$actorSearch,$search);
+$directorResults=search($pdo,$directorSearch,$search);
+?>
 <div class="container background d-flex flex-column flex-wrap align-item-start">
     <?php if ($search === '') { ?>
         <h1>Liste des films et artistes.</h1>
