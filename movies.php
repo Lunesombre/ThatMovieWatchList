@@ -80,7 +80,7 @@ if(isset($_SESSION['user_id'])){
             <div id="<?php echo 'movie_' . $movie_id ?>" class="movie_card row d-flex rounded-4 m-2 ">
                 <div class="movie_card_upperpart row pb-3 align-items-evenly mx-auto">
                     <div class="col-6 p-3">
-                        <img class="poster img-fluid rounded-4" <?php echo $row['movie_poster'] ?>>
+                        <img class="poster img-fluid rounded-4" src="<?php echo $row['movie_poster'] ?>" alt="Poster <?php echo $row['movie_name'] ?>">
                         <div class="text-end pt-1">
                             <?php
                             if (!isset($user_id)) { ?>
@@ -124,7 +124,9 @@ if(isset($_SESSION['user_id'])){
                 <div class="movie_card_lowerpart mx-auto mt-3 ">
                     <p class="p-3 movie_overview rounded-3">
                         <?php
-                        echo $row['movie_overview'];
+                        $truncatedOverview = substr($row['movie_overview'], 0, 210); // tronque si ça dépasse 210 caractères
+                        $paddedTo210Overview= str_pad($truncatedOverview, 210, " "); // rajoute des espaces si nécessaire pour atteindre 210 caractères
+                        echo str_pad($paddedTo210Overview, 213, '.'); // rajoute '...' pour finir
                         ?>
                     </p>
                 </div>
