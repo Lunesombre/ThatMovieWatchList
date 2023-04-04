@@ -44,11 +44,11 @@ if (isset($actor_id)) {
                     une actrice.
             </h2>
             <h3>Elle a notamment joué dans :</h3>
-            <?php } else { ?>
-                un acteur.
+        <?php } else { ?>
+            un acteur.
             </h2>
             <h3>Il a notamment joué dans :</h3>
-            <?php } ?>
+        <?php } ?>
         <p>
             <?php $query = "SELECT * FROM l_actor_movie NATURAL JOIN movie WHERE actor_id=$actor_id";
             $stmt = $pdo->query($query);
@@ -98,40 +98,46 @@ if (isset($actor_id)) {
         </div>
         <div class="m-5 align-items-between">
             <h2 class="text-end">
-                <?php echo $director['director_firstname'] . ' ' . $director['director_name'] ?>  est
+                <?php echo $director['director_firstname'] . ' ' . $director['director_name'] ?> est
                 <?php if ($director['director_gender'] === 1) { ?>
                     une réalisatrice.
             </h2>
             <h3>Elle a notamment réalisé :</h3>
-            <?php } else { ?>
-                un réalisateur.
+        <?php } else { ?>
+            un réalisateur.
             </h2>
             <h3>Il a notamment réalisé :</h3>
-            <?php } ?>
-            <p>
-                <?php $query = "SELECT * FROM l_director_movie NATURAL JOIN movie WHERE director_id=$director_id";
-                $stmt = $pdo->query($query);
-                $thisDirectorMovies = $stmt->fetchAll(); ?>
-            <div class="d-flex flex-row flex-wrap">
-                <?php foreach ($thisDirectorMovies as $result) {     ?>
-                    <a href="movie.php?movie_id=<?php echo $result['movie_id'] ?>" class="searchResults text-decoration-none d-flex align-items-around p-3 m-2 rounded-3">
-                        <div class="d-flex flex-column justify-content-between">
-                            <h3><?php echo $result['movie_name'] ?></h3>
-                            <div class="minipic rounded">
-                                <img src="<?php echo $result['movie_poster'] ?>" class="img-fluid rounded" alt="poster du film <?php echo $result['movie_name'] ?>">
-                            </div>
+        <?php } ?>
+        <p>
+            <?php $query = "SELECT * FROM l_director_movie NATURAL JOIN movie WHERE director_id=$director_id";
+            $stmt = $pdo->query($query);
+            $thisDirectorMovies = $stmt->fetchAll(); ?>
+        <div class="d-flex flex-row flex-wrap">
+            <?php foreach ($thisDirectorMovies as $result) {     ?>
+                <a href="movie.php?movie_id=<?php echo $result['movie_id'] ?>" class="searchResults text-decoration-none d-flex align-items-around p-3 m-2 rounded-3">
+                    <div class="d-flex flex-column justify-content-between">
+                        <h3><?php echo $result['movie_name'] ?></h3>
+                        <div class="minipic rounded">
+                            <img src="<?php echo $result['movie_poster'] ?>" class="img-fluid rounded" alt="poster du film <?php echo $result['movie_name'] ?>">
                         </div>
-                    </a>
-                <?php } ?>
-            </div>
-            </p>
-            <div class="d-flex justify-content-end">
-                <?php if ($backToThatPage !== 'dashboard.php') { ?>
-                    <a href='searchResults.php' class="align-self-end btn btn-outline-dark btn-sm">Retour à la page de recherche</a>
-                <?php } else { ?>
+                    </div>
+                </a>
+            <?php } ?>
+        </div>
+        </p>
+        <div class="d-flex justify-content-end">
+            <?php switch ($backToThatPage) {
+                case ($backToThatPage === 'dashboard.php'): ?>
                     <a href="dashboard.php" class="align-self-end btn btn-outline-dark btn-sm">Retour à mon profil</a>
-                <?php } ?>
-            </div>
+                <?php break;
+                case ($backToThatPage === 'movies.php'): ?>
+                    <a href="movies.php" class="align-self-end btn btn-outline-dark btn-sm">Revenir à 'parcourir les films'</a>
+                <?php break;
+                default: ?>
+                    <a href='searchResults.php' class="align-self-end btn btn-outline-dark btn-sm">Retour à la page de recherche</a>
+            <?php break;
+            } ?>
+        </div>
         </div>
     </div>
 <?php } ?>
