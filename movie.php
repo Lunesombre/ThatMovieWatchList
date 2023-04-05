@@ -1,11 +1,11 @@
 <?php
 session_start();
 $backToThatPage = $_SESSION['fromWhichPage'];
-require_once __DIR__ . '/functions/redirect.php';
+require_once __DIR__ . '/classes/Utils.php';
 require_once __DIR__ . '/db/pdo.php';
 
 if ((empty($_GET)) || (!isset($_GET['movie_id']))) {
-    redirect($backToThatPage);
+    Utils::redirect($backToThatPage);
 }
 $movie_id = $_GET['movie_id'];
 
@@ -18,7 +18,7 @@ if (isset($movie_id)) {
 
     $movie = $stmt->fetch();
     if ($movie === false) {
-        redirect($backToThatPage);
+        Utils::redirect($backToThatPage);
     }
 }
 $title = $movie['movie_name'];

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/functions/redirect.php';
+require_once __DIR__.'/classes/Utils.php';
 session_start();
 $_SESSION = [];
 session_destroy();
-redirect('index.php');
+Utils::redirect('index.php');
