@@ -3,7 +3,7 @@ $title = 'Résultats de recherche';
 session_start();
 $_SESSION['fromWhichPage'] = 'searchResults.php';
 require_once __DIR__ . '/db/pdo.php';
-require_once __DIR__ . '/functions/redirect.php';
+require_once __DIR__ . '/classes/Utils.php.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 require_once __DIR__ . '/layout/header.php';
 require_once __DIR__ . '/functions/search.php';
@@ -31,7 +31,7 @@ $directorResults=search($pdo,$directorSearch,$search);
         <h1>Vous avez recherché : "<?php echo $search ?>"</h1>
     <?php }
     if (empty($movieResults) && empty($actorResults) && empty($directorResults)) {
-        // redirect($BackToThatPage . '?msg=' . ConnexionMessages::SEARCH_ERROR);
+        // Utils::redirect($BackToThatPage . '?msg=' . ConnexionMessages::SEARCH_ERROR);
     ?>
         <div class="alert alert-warning my-1 mx-auto" role="alert">
             Aucun résultat ne correspond à votre recherche

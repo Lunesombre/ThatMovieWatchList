@@ -2,19 +2,19 @@
 session_start();
 $backToThatPage = $_SESSION['fromWhichPage'];
 require_once __DIR__ . '/layout/header.php';
-require_once __DIR__ . '/functions/redirect.php';
+require_once __DIR__ . '/classes/Utils.php';
 require_once __DIR__ . '/db/pdo.php';
 // var_dump($_GET);
 
 if (empty($_GET)) {
-    redirect('index.php');
+    Utils::redirect('index.php');
 }
 if (isset($_GET['actor_id'])) {
     $actor_id = $_GET['actor_id'];
 } elseif (isset($_GET['director_id'])) {
     $director_id = $_GET['director_id'];
 } else {
-    redirect($backToThatPage);
+    Utils::redirect($backToThatPage);
 }
 
 if (isset($actor_id)) {

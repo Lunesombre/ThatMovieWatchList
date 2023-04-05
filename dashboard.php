@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once __DIR__ . '/functions/redirect.php';
+require_once __DIR__ . '/classes/Utils.php';
 require_once __DIR__ . '/db/pdo.php';
 if (!isset($_SESSION['pseudo'])) {
-    redirect('index.php');
+    Utils::redirect('index.php');
 }
 $pseudo = $_SESSION['pseudo'];
 $query = "SELECT user_id FROM users WHERE user_nickname='$pseudo'";

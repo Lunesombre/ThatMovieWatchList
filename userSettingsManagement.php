@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once __DIR__ . '/functions/redirect.php';
+require_once __DIR__ . '/classes/Utils.php';
 require_once __DIR__ . '/classes/ConnexionMessages.php';
 
 if (empty($_POST) || empty($_POST['pseudo']) && empty($_POST['newPassword'])) {
-    redirect('dashboard.php');
+    Utils::redirect('dashboard.php');
 }
 require_once __DIR__ . '/db/pdo.php';
 
@@ -31,13 +31,13 @@ $passwordCheck = $stmt->fetch();
 if ($passwordCheck === false) {
     $_SESSION = [];
     session_destroy();
-    redirect('index.php?msg=' . ConnexionMessages::PROFILE_UPDATE_FAILURE);
+    Utils::redirect('index.php?msg=' . ConnexionMessages::PROFILE_UPDATE_FAILURE);
 }
 var_dump($passwordCheck);
 $hashedPassword = $passwordCheck['user_password'];
 
 if (password_verify($currentPassword, $hashedPassword) === false) {
-    redirect('dashboard.php?msg=' . ConnexionMessages::WRONG_PASSWORD);
+    Utils::redirect('dashboard.php?msg=' . ConnexionMessages::WRONG_PASSWORD);
 }
 
 // enregistrement du nouveau pseudo
@@ -50,7 +50,7 @@ if (isset($newPseudo) === true) {
     ]);
     $stmt->fetch();
     $_SESSION['pseudo'] = $newPseudo;
-    redirect('dashboard.php?msg=' . ConnexionMessages::PROFILE_UPDATE_SUCCESS);
+    Utils::redirect('dashboard.php?msg=' . ConnexionMessages::PROFILE_UPDATE_SUCCESS);
 }
 
 //enregistrement du nouveau mot de passe
@@ -62,5 +62,5 @@ if (isset($newPassword) === true) {
         'pseudo' => $_SESSION['pseudo']
     ]);
     $stmt->fetch();
-    redirect('dashboard.php?msg=' . ConnexionMessages::PROFILE_UPDATE_SUCCESS);
+    Utils::redirect('dashboard.php?msg=' . ConnexionMessages::PROFILE_UPDATE_SUCCESS);
 }
